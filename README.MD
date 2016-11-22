@@ -491,3 +491,160 @@ For Firefox, an object must be defined to implement the string literal:
 	
 }());
 ```
+
+
+##Classes
+
+In ES5, there are many lines of code necessary to define a class and properties. In this example, we are definining a ```BankAccount``` class.
+The class has:
+-  two __private properties__ ```_accountNumber``` and ```_balance```-  
+-  two __methods__ ```deposit``` and ```withdraw```
+-  two getters for the private properties, making them accessible from outside (by convention notation is ```_property```)
+-  a redefinition of the ```toString``` method, which returns info about the account
+
+For example, to define a property, we must write:
+
+```javascript
+	Object.defineProperty(BankAccount.prototype, "balance", {
+		get: function () {
+			return this._balance;
+		},
+		enumerable: true,
+		configurable: true
+	});
+```
+
+We have just defined a read-only property that returns the state of the account.
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript">MDN Introduction to OOP</a>
+
+In ES6, it is much easier to define classes, using the ``` Class ``` keyword. 
+
+- Using the ``` constructor ``` keyword - define a constructor 
+- Using the ``` get ``` keyword - define a getter for the properties
+- Using the ``` set ``` keyword - set a setter for the properties
+- Define a method by ``` methodName(methodParameters) ```
+
+```javascript
+"use strict";
+
+//ES5
+(function()
+{
+var BankAccount = (function()
+{
+	function BankAccount(accountNumber, holder, balance)	{
+		this._accountNumber = accountNumber;
+		this.accountHolder = holder;
+		this._balance = balance;
+	}
+	//define a property balance that returns the current state of the account
+	//there are many lines of code necessary to define properties
+	Object.defineProperty(BankAccount.prototype, "balance", {
+		get: function () {
+			return this._balance;
+		},
+		enumerable: true,
+		configurable: true
+	});
+
+	Object.defineProperty(BankAccount.prototype, "accountNumber", {
+		get: function () {
+			return this._accountNumber;
+		},
+		enumerable: true,
+		configurable: true
+	});
+
+	//method - deposit
+	BankAccount.prototype.deposit = function (amount){
+		if (amount < 0 ){
+			return;
+		}
+		this._balance += amount;
+	};
+
+	//method - withdraw
+	BankAccount.prototype.withdraw = function (amount) {
+		if (amount < 0 || amount > this._balance){
+			return;
+		}
+		this._balance -= amount;
+	};
+
+	BankAccount.prototype.toString = function (){
+		return "Account" + this._accountNumber + ", holder: " + this.accountHolder + ", account state " + this._balance;
+	};
+
+	return BankAccount;
+})();
+
+var account = new BankAccount(4711, "Wilhelm Brause", 100);
+account.deposit(200);
+account.withdraw(50);
+console.log(account.toString());
+
+})();
+
+//ES6
+(function()
+{
+	class BankAccount
+	{
+		// Changes:
+		// - remove functions, add constructor
+		// - remove ;
+		// - remove return of the BankAccount
+		// - remove the : before the properties
+		//define - constructor
+		constructor(accountNumber, holder, balance)	{
+			this._accountNumber = accountNumber;
+			this.accountHolder = holder;
+			this._balance = balance;
+		}
+		//define a property balance that returns the current state of the account
+		//there are many lines of code necessary to define properties	
+		get balance() {
+				return this._balance;
+		}	
+		
+		//setter
+		/*
+		set balance(value){
+			this._balance = value;
+		}*/
+
+		get accountNumber () {
+				return this._accountNumber;
+		}
+
+		//method - deposit
+		deposit (amount){
+			if (amount < 0 ){
+				return;
+			}
+			this._balance += amount;
+		}
+
+		//method - withdraw
+		withdraw (amount) {
+			if (amount < 0 || amount > this._balance){
+				return;
+			}
+			this._balance -= amount;
+		}
+
+		toString (){
+			return `Account:  ${this._accountNumber}  holder: ${this.accountHolder} account state:  ${this._balance}`;
+		};
+	}
+
+	var account = new BankAccount(4711, "Wilhelm Beethoven", 100);
+	account.deposit(2000);
+	account.withdraw(500);
+	console.log(account.toString());
+})();
+
+
+
+```

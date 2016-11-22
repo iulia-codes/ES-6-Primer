@@ -1,23 +1,25 @@
 # ES-6 - What's new?
 
-##ECMAScript is the name under the ECMA-262 standard
+ECMAScript is the name under the ECMA-262 standard
 
 Javascript is an implementation of this standard. In June 2015, the new version of the standard appeared - with many changes.
 <a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a> explains the implementation in different browsers for ECMA Script vesion.
 
 There are the so called "transpilers" (compilers/polyfills) that compile the ES6 to ES5 such as Babel core-js or Traceur.
 
+###  Workspace
+
 A development of ES6 programs can be done in an editor that offers intellisense and other options.  Editor options:
 
-*Webstorm
+* Webstorm
 
 One of those is Webstorm - buy to use, from JetBrains.
 
-*Sublime Text
+* Sublime Text
 
 Another option is Sublime Text - a very loved editor that works on all OS's. The actual version is Sublime 3. 
 
-*Atom
+* Atom
 
 Another version is Atom, that is an open editor from Github, based on Javascript.
 
@@ -32,7 +34,7 @@ It is like a compiler, but it transfers code from one standard to another, gener
 There are two transpilers:
 
 * Traceur (Google)
-* <a href="babeljs.io">Babel (Github)</a>	
+* <a href="http://www.babeljs.io">Babel (Github)</a>	
 
 It is better to automate the transpiler functions by using for example, <a href="http://gulp.io">Gulp</a>
 
@@ -136,7 +138,19 @@ class Person {
 
 Now the result of this file will appear in both the folders. They look quite different.
 
+Overview of steps:
+*npm init*
+*Install gulp globally*
+*Install gulp babel, gulp traceur*
+*Created the gulpfile, and made the connection the the babel and traceur exits*
+*Started gulp from command line, and let it watch the files*
+
+_End._
 
 ### Install Node.js
 
 From the command line, run ``` node ``` to start the node REPL.
+
+##Declaring constants
+
+Modify the folder structure

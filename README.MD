@@ -973,3 +973,75 @@ Let us define a set, with some values, and iterate over it in both ways.
 ```
 
 The result is that the second way with ``for .. in`` , has absolutely no effect.
+
+## Arrow functions
+
+Functions may be sent as arguments to other functions in JS. This can happen quite often. An example of these are the ``callback`` functions.
+
+Let us define an array of numbers ranging from 1 to 9. 
+
+```javascript
+	var numbers = [1,2,3,4,5,6,7,8,9];
+```
+
+We want to print only the even numbers. The way to implement this is by using the ``numbers.filter`` in conjunction with creating a ``function``. The function verifies if a number is even. When the function completes, the result is loaded into another array ``evens`` 
+
+
+```javascript
+	var evens = numbers.filter(function(num){
+		return num % 2 === 0;
+	});
+
+```
+All in one in ES5:
+
+```javascript
+//ES5
+(function(){
+	
+	var numbers = [1,2,3,4,5,6,7,8,9];
+
+	var evens = numbers.filter(function(num){
+		return num % 2 === 0;
+	});
+
+	console.log(evens);
+}());
+```
+In __ES6__, the arrow functions are available. The code will be more clean & compact. The keyword ``function`` is removed and the arrow `=>` is introduced.
+
+```javascript
+(function(){
+	
+	var numbers = [1,2,3,4,5,6,7,8,9];
+
+	//here I call the function filter
+	//the function filter has the argument num
+	//the result will be saved in evens
+	var evens = numbers.filter((num) => {
+		return num % 2 === 0;
+	});
+
+	console.log(evens);
+}());
+```
+If there is only __one parameter__, the extra paranthesis can be removed:
+
+```javascript
+(function(){
+	
+	var numbers = [1,2,3,4,5,6,7,8,9];
+
+	//here we can remove the extra () when there is only one parameter
+	var evens = numbers.filter(num => {
+		return num % 2 === 0;
+	});
+
+	console.log(evens);
+}());
+```
+If there is only __one line in the body of the function__, the extra `{}` can be removed for a more compact writing:
+
+```javascript
+	var evens = numbers.filter(num => num % 2 === 0);
+```

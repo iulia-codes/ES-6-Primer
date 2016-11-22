@@ -651,7 +651,7 @@ console.log(account.toString());
 
 ## Inheritance
 
-Starting from the previously defined ```BankAccount``` class, we want to create a child account which has a difference from the main account:
+Starting from the previously defined ```BankAccount``` class, we want to create a child account which has some difference from the main account:
 
 - it is not possible to extract more than 50eur at a time
 - name of a parent must be given
@@ -659,7 +659,7 @@ Starting from the previously defined ```BankAccount``` class, we want to create 
 
 In ES6, it possible to extend a class, using the ``` extends ``` keyword. 
 
-- Using the ``` super ``` keyword - call the same method from the parent class
+- Using the ``` super ``` keyword - call the same method from the parent class. 
 
 ```javascript
 	constructor(accountNumber, holder, balance, parentName ){
@@ -667,11 +667,110 @@ In ES6, it possible to extend a class, using the ``` extends ``` keyword.
 			this.parentName = parentName;
 		}
 ```
-- one may overwrite a constructor by adding additional parameters to the parent constructor
+- one may overwrite a constructor by adding additional parameters to the parent constructor. Here ```super``` is called, then a new property is added to the class.
 
 ```javascript
 	constructor(accountNumber, holder, balance, parentName ){
 			super(accountNumber, holder, balance);
 			this.parentName = parentName;
 		}
+```
+
+Full code, this will print:
+
+```Account:  4711  holder: Wilhelm Brause account state:  250 ```
+```Account:  4712  holder: Peter Brause account state:  70 Parent:  Wilhelm Brause ```
+
+```javascript
+"use strict";
+
+//ES6
+(function()
+{
+	class BankAccount
+	{
+		// Changes:
+		// - remove functions, add constructor
+		// - remove ;
+		// - remove return of the BankAccount
+		// - remove the : before the properties
+		//define - constructor
+		constructor(accountNumber, holder, balance)	{
+			this._accountNumber = accountNumber;
+			this.accountHolder = holder;
+			this._balance = balance;
+		}
+		//define a property balance that returns the current state of the account
+		//there are many lines of code necessary to define properties	
+		get balance() {
+				return this._balance;
+		}	
+		
+		//setter
+		/*
+		set balance(value){
+			this._balance = value;
+		}*/
+
+		get accountNumber () {
+				return this._accountNumber;
+		}
+
+		//method - deposit
+		deposit (amount){
+			if (amount < 0 ){
+				return;
+			}
+			this._balance += amount;
+		}
+
+		//method - withdraw
+		withdraw (amount) {
+			if (amount < 0 || amount > this._balance){
+				return;
+			}
+			this._balance -= amount;
+		}
+
+		toString (){
+			return `Account:  ${this._accountNumber}  holder: ${this.accountHolder} account state:  ${this._balance}`;
+		};
+	}
+	
+
+
+	class ChildBankAccount extends BankAccount{
+		//define a constructor if there are additional parameters
+		constructor(accountNumber, holder, balance, parentName ){
+			super(accountNumber, holder, balance);
+			this.parentName = parentName;
+		}
+
+		withdraw(amount){
+			if (amount > 50 )
+			{
+				return;
+			}
+			super.withdraw(this, amount);
+		};
+
+		toString (){
+			return super.toString() + ` Parent:  ${this.parentName}`;
+		};
+
+
+	}
+
+	var account = new BankAccount(4711, "Wilhelm Brause", 100);
+	account.deposit(200);
+	account.withdraw(50);
+	console.log(account.toString());
+
+	//here Wilhelm Brause is the parent of Peter Brause
+	var childAccount = new ChildBankAccount(4712, "Peter Brause", 30 , "Wilhelm Brause");
+	childAccount.deposit(40);
+	childAccount.withdraw(51);
+	console.log(childAccount.toString());
+
+})();
 ```

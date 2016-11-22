@@ -166,4 +166,36 @@ From the command line, run ``` node ``` to start the node REPL.
 
 ##Declaring constants
 
-Modify the folder structure
+Previously, in ES5, it was possible to change the value of a variable by using the var.
+
+__ES-5 __ : This will print by turn, __3.14__ and __5__
+
+```javascript
+var pi = 3.14;
+
+console.log(pi);
+
+pi = 5;
+
+console.log(pi);
+```
+
+In ES-6, it is possible to declare a __const__, that does not allow the change of the variable anymore.
+
+__ES-6 __ : This will print by turn, __3.14__ and __Error__
+
+```javascript
+const pii = 3.14;
+
+console.log(pii);
+
+pii = 5;
+
+console.log(pii);
+```
+
+```javascript
+
+2_1_Const.js:17 Uncaught TypeError: Assignment to constant variable.(…)(anonymous function) @ 2_1_Const.js:17
+
+```

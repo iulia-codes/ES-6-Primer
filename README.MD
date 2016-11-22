@@ -894,4 +894,82 @@ For each entry, there is a key and a value. Possible operations:
 
 ## The ``for ... of`` loop
 
-In __ES6__ a new loop type was introduced. 
+In __ES6__ a new loop type was introduced. With this loop it is possible to iterate over arrays, maps, sets.
+
+In our example, we have defined three elements which are part of the array. We then want to iterate the elements.
+
+- `for ... of ` iterates over the contents of the properties
+- `for ... in ` iterates over property names and has __no effect on set iteration__
+
+```javascript
+
+(function(){
+	
+	var myArray = ["Element 1", "Element 2", "Element 3"];
+
+	console.log("For .. of looping an array");
+
+	//ES6
+	for(var elem of myArray){
+		console.log(elem);
+	}
+	
+	console.log("For .. in looping an array");
+	//ES5
+	for(var elem in myArray){
+		console.log(elem);
+	}
+}());
+```
+
+The result:
+
+```javascript
+For .. of looping an array
+Element 1
+Element 2
+Element 3
+For .. in looping an array
+0
+1
+2
+```
+
+Let us now define a map with some values, and an object and iterate over it.
+
+```javascript
+
+	var dict = new Map();
+	dict.set(4711, "A value");
+	dict.set(4712, "Another value");
+	dict.set("a", 123456);
+	dict.set(123, {x:1, y:2});
+	console.log("For .. of looping a map");
+	for(var [key, value] of dict.entries()){
+		console.log(key + " : " + value);
+	}
+```
+
+Let us define a set, with some values, and iterate over it in both ways.
+
+```javascript
+	var mySet = new Set();
+	mySet.add(1);
+	mySet.add(2);
+	console.log(mySet.size);	
+	mySet.add(2);
+	console.log(mySet.size);	
+	mySet.add("Hello");
+
+	console.log("For .. of looping a set");
+	for(var elem of mySet){
+		console.log(elem);
+	}
+
+	console.log("For .. in looping a set");
+	for(var elem in mySet){
+		console.log(elem);
+	}
+```
+
+The result is that the second way with ``for .. in`` , has absolutely no effect.

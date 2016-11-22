@@ -425,3 +425,30 @@ Both functions will print the content of the variables.
 	
 }());
 ```
+
+##Template strings
+
+Template literals can be used to replace expression like these:
+
+
+```javascript
+console.log("lat="+ lat + " lan = " + lon + " normalNull = " + normalNull );
+
+```
+
+to these:
+
+```javascript
+console.log( `lat=${lat} lan=${lon} normalNull=${normalNull}` );
+```
+
+__Syntax:__
+
+```javascript
+`${[variable]}`
+```
+Notice the usage of ```javascript ` ``` The template string must defined between these special characters.
+
+For Firefox, an object must be defined to implement the string literal:
+
+

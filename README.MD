@@ -777,10 +777,10 @@ Full code, this will print:
 
 ## Shorthands
 
-In our next example, we define three variables ```lat```, ```lon```, ```normalNull``` (that gives a geographical position). The downside:
+In our next example, we define three variables ```lat```, ```lon```, ```normalNull``` (that gives a geographical position). We do this by:
 
-- redundant in defining the variable, by defining ```lat: lat``` and so on. 
-- defining the method ```print``` inside the variable
+- being redundant in defining the variables, by setting ```lat: lat``` and so on. 
+- defining the method ```print``` inside the variable using the ``function`` keyword
 
 
 ```javascript
@@ -807,7 +807,7 @@ In our next example, we define three variables ```lat```, ```lon```, ```normalNu
 	
 }());
 ```
-In ES6, when the variable name is the same as the variable that gets the value from, the primary variable names can be removed:
+In __ES6__, when the variable name is the same as the variable that gets the value from, the primary variable names can be removed:
 
 ```javascript
 var pos = { lat,lon,normalNull};
@@ -843,3 +843,22 @@ Put together:
 	
 }());
 ```
+
+## Maps and Sets
+
+In ES5, only ``arrays`` were available to administrate lists.
+
+With __ES6__, two more data structures are available:
+* ``Map`` - comparable to a Dictionary from other languages. The Map object is a simple key/value map. Any value (both objects and primitive values) may be used as either a key or a value.
+ 
+For each entry, there is a key and a value. Possible operations:
+- ``new Map(); `` - initialize (var dict = new Map();)
+- ``set`` - set a value (property)
+- ``get`` - gets a value (property)
+- ``has`` - a method that checks if a key exists (method)
+ 
+* ``Set`` - The Set object lets you store unique values of any type, whether primitive values or object references.
+
+- ``new Set(); `` - initialize
+- ``add`` - adds a value (property)
+- ``size`` - gets the size of a set (method)

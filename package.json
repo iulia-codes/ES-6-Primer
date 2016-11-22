@@ -12,5 +12,10 @@
     "2015"
   ],
   "author": "Iulia Buga",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-traceur": "^0.17.2"
+  }
 }

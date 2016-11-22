@@ -85,13 +85,13 @@ var gulp = require('gulp'),
 
 gulp.task('traceur', function(){
 	gulp.src([es6Path])
-		.pipe(traceur{blockBinding: true}))
+		.pipe(traceur({blockBinding: true}))
 		.pipe(gulp.dest(compilePath + '/traceur'));
 });
 
 gulp.task('babel', function(){
 	gulp.src([es6Path])
-		.pipe(babel()))
+		.pipe(babel())
 		.pipe(gulp.dest(compilePath + '/babel'));
 });
 
@@ -152,11 +152,11 @@ class Person {
 Now the result of this file will appear in both the folders. They look quite different.
 
 Overview of steps:
-*npm init*
-*Install gulp globally*
-*Install gulp babel, gulp traceur*
-*Created the gulpfile, and made the connection the the babel and traceur exits*
-*Started gulp from command line, and let it watch the files*
+* npm init
+* Install gulp globally
+* Install gulp babel, gulp traceur 
+* Created the gulpfile, and made the connection the the babel and traceur exits
+* Started gulp from command line, and let it watch the files
 
 _End._
 

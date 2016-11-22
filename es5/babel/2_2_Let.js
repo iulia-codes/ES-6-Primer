@@ -1,8 +1,9 @@
 "use strict";
 
 //ES5
-(function(){
-	for (var i = 0; i < 5 ; i++) {
+
+(function () {
+	for (var i = 0; i < 5; i++) {
 		console.log(i);
 	}
 
@@ -12,25 +13,23 @@
 	//but the variable is visible even though it is outside the loop
 	//the JS: the var is visible although outside the loop
 	console.log(i);
-
 })();
 
 //ES6
-(function(){
+(function () {
 
-	if (true)
-	{
+	if (true) {
 		let onlyInBlock = 1;
 		console.log(onlyInBlock);
 	}
 
 	//therefore, it is possible to declare block level variables with ES-6
-	for (let j = 0; j < 2 ; j++) {
+	for (let j = 0; j < 2; j++) {
 		let onlyInBlock = 3;
 		console.log(onlyInBlock);
 	}
 
-	for (let i = 0; i < 5 ; i++) {
+	for (let i = 0; i < 5; i++) {
 		console.log(i);
 	}
 
@@ -41,5 +40,4 @@
 	//the ES6: we can use block scoping, so the i is not visible anymore outside the loop
 	//this will trigger an error
 	console.log(i);
-
 })();

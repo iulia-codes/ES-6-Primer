@@ -182,7 +182,7 @@ console.log(pi);
 
 In ES-6, it is possible to declare a __const__, that does not allow the change of the variable anymore.
 
-__ES-6 __ : This will print by turn, __3.14__ and __Error__
+__ES-6__ : This will print by turn, __3.14__ and __Error__
 
 ```javascript
 const pii = 3.14;

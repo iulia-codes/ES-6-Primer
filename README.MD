@@ -1045,3 +1045,98 @@ If there is only __one line in the body of the function__, the extra `{}` can be
 ```javascript
 	var evens = numbers.filter(num => num % 2 === 0);
 ```
+
+## This
+
+Let us define a Countdown function, which starts at 10. Define timeout which runs every second, and where we print the counter. If the counter is 0, then delete the interval.
+
+```javascript
+(function(){
+	
+	function Countdown(){
+		this.count = 10;
+
+		var timer = setInterval(function print(){
+			console.log(this.count--);
+			if (this.count === 0 ){
+				clearInterval(timer);
+			}
+		}, 1000);
+	}
+
+	new Countdown();
+}());
+```
+
+After running the function, we observe that the result is ``NaN``. What is the problem with this code?
+
+The problem is that this in:
+
+``if (this.count === 0 ){``
+
+is not the same ``this`` as in
+
+``this.count = 10;``
+
+The solution is to keep the state of ``this`` in a variable, usually ``that``: 
+
+```javascript
+(function(){
+	
+	function Countdown(){		
+		//keep the state of the variable in the current scope
+		var that = this;
+		this.count = 10;
+
+		var timer = setInterval(function print(){
+			console.log(that.count--);
+			//that is the the same as this
+			if (that.count === 0 ){
+				clearInterval(timer);
+			}
+		}, 1000);
+	}
+
+	new Countdown();
+}());
+```
+In __ES6__, it is no longer needed to save the state in a different variable. Instead, we can use an arrow function.
+
+Replace:
+
+```javascript
+var timer = setInterval(function print(){...})
+```
+
+with:
+
+```javascript
+var timer = setInterval(() => {..})
+```
+
+while still using the this keyword.
+
+```javascript
+//ES6
+(function(){
+	
+	function Countdown(){				
+		this.count = 10;
+
+		var timer = setInterval(() => {
+			console.log(this.count--);
+			//that is the the same as this
+			if (this.count === 0 ){
+				clearInterval(timer);
+			}
+		}, 1000);
+	}
+
+	new Countdown();
+}());
+
+```
+
+This eliminates completely the usage of extra variables to safe the state. Nice addition!
+
+

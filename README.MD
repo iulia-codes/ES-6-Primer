@@ -257,3 +257,14 @@ in __ES6__ printing the value of __i__ outside the loop, will trigger an error.
 })();
 
 ```
+
+##The Default parameter
+
+It is possible to send a default parameter value (quick & easy:
+
+```javascript
+function CalculateBrutto(netto, tax = 19){	
+		return netto * (1 + tva / 100);
+	}
+
+```

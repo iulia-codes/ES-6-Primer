@@ -196,6 +196,64 @@ console.log(pii);
 
 ```javascript
 
+/*
 2_1_Const.js:17 Uncaught TypeError: Assignment to constant variable.(…)(anonymous function) @ 2_1_Const.js:17
+*/
+
+```
+
+##Declaring variables with Let - Block Scope
+
+The __let__ keyword enables us to define a variable block level.
+
+Whereas in __ES5__ the value of __i__ would have been printed to the console as __5__
+in __ES6__ printing the value of __i__ outside the loop, will trigger an error. 
+
+```Uncaught ReferenceError: i is not defined(…) (line 43)```
+
+```javascript
+//ES5
+(function(){
+	for (var i = 0; i < 5 ; i++) {
+		console.log(i);
+	}
+
+	//in the most programming languages, this is not possible
+	//i is inside the scope of the loop and not visibel
+	console.log("Outside the for loop");
+	//but the variable is visible even though it is outside the loop
+	//the JS: the var is visible although outside the loop
+	console.log(i);
+
+})();
+
+//ES6
+(function(){
+
+	if (true)
+	{
+		let onlyInBlock = 1;
+		console.log(onlyInBlock);
+	}
+
+	//therefore, it is possible to declare block level variables with ES-6
+	for (let j = 0; j < 2 ; j++) {
+		let onlyInBlock = 3;
+		console.log(onlyInBlock);
+	}
+
+	for (let i = 0; i < 5 ; i++) {
+		console.log(i);
+	}
+
+	//in the most programming languages, this is not possible
+	//i is inside the scope of the loop and not visibel
+	console.log("Outside the for loop");
+	//but the variable is visible even though it is outside the loop
+	//the ES6: we can use block scoping, so the i is not visible anymore outside the loop
+	//this will trigger an error
+	console.log(i);
+
+})();
 
 ```

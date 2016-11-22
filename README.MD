@@ -774,3 +774,72 @@ Full code, this will print:
 
 })();
 ```
+
+## Shorthands
+
+In our next example, we define three variables ```lat```, ```lon```, ```normalNull``` (that gives a geographical position). The downside:
+
+- redundant in defining the variable, by defining ```lat: lat``` and so on. 
+- defining the method ```print``` inside the variable
+
+
+```javascript
+//ES5
+(function(){
+	var lat =  47.070606;
+	var lon =  15.4345208;
+	var normalNull = 359;
+	
+	var pos = {
+		lat: lat,
+		lon: lon,
+		normalNull: normalNull
+	}
+	//the position has a method print
+	var posPrinter = {
+		print: function(p)
+		{
+			console.log( `lat=${pos.lat} lon=${pos.lon} normalNull=${pos.normalNull}` );		
+		}
+	}
+
+	posPrinter.print(pos);
+	
+}());
+```
+In ES6, when the variable name is the same as the variable that gets the value from, the primary variable names can be removed:
+
+```javascript
+var pos = { lat,lon,normalNull};
+```
+and we can remove the ``function`` keyword:
+
+```javascript
+var posPrinter = {
+		print: function(p)
+		{
+			console.log( `lat=${pos.lat} lon=${pos.lon} normalNull=${pos.normalNull}` );		
+		}
+	}
+```
+
+Put together:
+
+```javascript
+(function(){
+	var lat =  47.070606;
+	var lon =  15.4345208;
+	var normalNull = 359;
+	
+	var pos = { lat,lon,normalNull};
+	//shorthand for properties and methods
+	var posPrinter = {
+		print(p){
+			console.log( `lat=${pos.lat} lon=${pos.lon} normalNull=${pos.normalNull}` );		
+		}
+	}
+
+	posPrinter.print(pos);
+	
+}());
+```

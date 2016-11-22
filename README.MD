@@ -42,7 +42,7 @@ It is better to automate the transpiler functions by using for example, <a href=
 
 To install the Gulp, go at the command line.  Initialize a simple repository by adding all the information to it.
 
-``` 
+```javascript
 npm init 
 
 ```
@@ -51,19 +51,32 @@ Leave empty the fields which are not completed yet. At the end, type ```yes``` t
 
 Install gulp:
 
-``` npm install -g gulp ```
-``` npm install gulp --save-dev```
-``` npm install gulp-babel --save-dev```
-``` npm install gulp-traceur --save-dev```
+```javascript
+ npm install -g gulp 
+ ```
+```javascript
+ npm install gulp --save-dev
+```
+
+```javascript
+ npm install gulp-babel --save-dev 
+```
+
+```javascript
+ npm install gulp-traceur --save-dev
+```
 
 Now we have installed __Gulp__ and both the modules installed.
 
 Run the gulpfile in your favourite editor:
-``` code gulpfile.js ```
+
+```javascript
+ code gulpfile.js 
+```
 
 We want to have every js file from folder __es6__ transpiled into __es5__ folder.
 
-```
+```javascript
 var gulp = require('gulp'),
 	traceur = require('gulp-traceur'),
 	babel = require('gulp-babel'),
@@ -96,7 +109,7 @@ Now we should have a gulp file and the package.json (with all modules that we al
 
 To finally run the script, you must have the folders created:
 
-```
+```javascript
 es5
 	babel
 	traceur
@@ -105,7 +118,7 @@ es6
 
 The final folder structure should look like:
 
-```
+```javascript
 es5
 	babel
 	traceur
@@ -117,7 +130,7 @@ package.json
 
 ... then simply run from the command line 
 
-```
+```javascript
 gulp
 ```
 Now, the __gulp__ watch has already started.
@@ -127,7 +140,7 @@ Now, the __gulp__ watch has already started.
 
 Create in __es6/person.js__ a class called __Person__
 
-```
+```javascript
 class Person {
 	constructor (name){
 		this.name = name;

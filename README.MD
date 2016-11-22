@@ -352,7 +352,7 @@ Syntax:
 
 ```
 
-We can now concatenate arrays, add more items to the array and change the number of parameters.
+We can now concatenate arrays, add more items to the array and change the number of parameters. The syntax is similar to rest.
 
 ```javascript
 (function(){
@@ -370,6 +370,56 @@ We can now concatenate arrays, add more items to the array and change the number
 
 	var arrayLiteral = [0, ...numbers,7,8];
 	console.log(arrayLiteral);
+	
+}());
+```
+
+##Destructing
+
+We are given three geographical coordinates, langitute, latitute and normal null.
+
+These 3 coordinates are defined into an array. From an array we create an own variable. It is possible to jump over an empty value:
+
+```javascript
+var [lat, lon, , normalNull] = coords;
+```
+We can assemble them:
+
+```javascript
+var coords = [47.070606, 15.4345208, 359];
+
+	//in this case, we have used a destructing construction
+	//all the three vars are now assembled into an array
+	var [lat, lon, normalNull] = coords;
+```
+
+Both functions will print the content of the variables.
+
+```javascript
+//ES5
+(function(){
+	var coords = [47.070606, 15.4345208, 359];
+	var lat = coords[1];
+	var len = coords[2];
+	//https://en.wikipedia.org/wiki/Normalnull
+	//Normalnull ("standard zero") or Normal-Null (short N. N. or NN ) is an outdated official vertical datum used in Germany. 
+	//Elevations using this reference system were to be marked "Meter über Normal-Null" (“meters above standard zero”). 
+	//Normalnull has been replaced by Normalhöhennull (short NHN).
+	var normalNull = coords[3];
+
+	console.log("lat="+ lat + " lan = " + len + " normalNull = " + normalNull );
+	
+}());
+
+
+//ES6
+(function(){
+	
+	var coords = [47.070606, 15.4345208, 359];
+
+	//in this case, we have used a destructing construction
+	//all the three vars are now assembled into an array
+	var [lat, lon, normalNull] = coords;
 	
 }());
 ```

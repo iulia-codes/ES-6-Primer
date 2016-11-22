@@ -428,6 +428,16 @@ Both functions will print the content of the variables.
 
 ##Template strings
 
+It is no longer needed to concatenate the values, simply use the string literal.
+
+__Syntax:__
+
+```javascript
+`${[variable]}`
+```
+
+Notice the usage of ```javascript ` ``` The template string must defined between these special characters.
+
 Template literals can be used to replace expression like these:
 
 
@@ -442,13 +452,42 @@ to these:
 console.log( `lat=${lat} lan=${lon} normalNull=${normalNull}` );
 ```
 
-__Syntax:__
-
-```javascript
-`${[variable]}`
-```
-Notice the usage of ```javascript ` ``` The template string must defined between these special characters.
-
 For Firefox, an object must be defined to implement the string literal:
 
 
+```javascript
+//ES5
+(function(){
+	var coords = [47.070606, 15.4345208, 359];
+	
+	var [lat, lon, normalNull] = coords;
+
+	console.log("lat="+ lat + " lan = " + lon + " normalNull = " + normalNull );
+	
+}());
+
+
+//ES6
+(function(){
+	var coords = [47.070606, 15.4345208, 359];
+	
+	var [lat, lon, normalNull] = coords;
+
+	console.log( `lat=${lat} lan=${lon} normalNull=${normalNull}` );
+	
+}());
+
+//ES6 - Firefox
+(function(){
+	var coords = [47.070606, 15.4345208, 359];
+	
+	var k = {
+		lat: 47.070606,
+		lon: 15.4345208,
+		normalNull: 359
+	}
+
+	console.log( `lat=${k.lat} lan=${k.lon} normalNull=${k.normalNull}` );
+	
+}());
+```

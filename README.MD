@@ -314,3 +314,62 @@ __args[]__ from other programming languages (like C#)
 	
 }());
 ```
+
+##The Spread keyword
+
+Let us say that we have a function that adds 3 numbers. What if the arguments are an array? Then we have to process the array elements into the solution:
+
+```javascript
+//ES5
+(function(){
+	function AddNumbers(nr1, nr2, nr3){
+		var result = nr1 + nr2 + nr3;	
+		return result;
+	}
+
+	var numbers = [1,2,3];
+	//option 1
+	console.log(AddNumbers(numbers[0], numbers[1], numbers[3]));
+
+	//option 2: apply in the current scope (this) in our case null and the numbers	
+	console.log(AddNumbers.apply(null, numbers));	
+
+	//add other numbers
+	var otherNumbers = [4,5,6];
+	Array.prototype.push.apply(numbers, otherNumbers);
+
+	console.log(numbers);
+	
+}());
+```
+The cleaner __ES6__ variant, instead of using apply, simply use __...numbers__
+
+Syntax:
+
+```javascript
+
+...[argument]
+
+```
+
+We can now concatenate arrays, add more items to the array and change the number of parameters.
+
+```javascript
+(function(){
+	function AddNumbers(nr1, nr2, nr3){
+		var result = nr1 + nr2 + nr3;	
+		return result;
+	}
+
+	var numbers = [1,2,3];
+	console.log(AddNumbers(...numbers));
+	
+	var otherNumbers = [4,5,6];
+	numbers.push(...otherNumbers);
+	console.log(numbers);
+
+	var arrayLiteral = [0, ...numbers,7,8];
+	console.log(arrayLiteral);
+	
+}());
+```

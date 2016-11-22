@@ -374,7 +374,9 @@ We can now concatenate arrays, add more items to the array and change the number
 }());
 ```
 
-##Destructing
+##Destructuring assignment
+
+The destructuring assignment syntax is a JavaScript expression that makes it possible to extract data from arrays or objects into distinct variables.
 
 We are given three geographical coordinates, langitute, latitute and normal null.
 

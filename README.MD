@@ -436,7 +436,7 @@ __Syntax:__
 `${[variable]}`
 ```
 
-Notice the usage of ```javascript ` ``` The template string must defined between these special characters.
+Notice the usage of ``` ` ``` The template string must defined between these special characters.
 
 Template literals can be used to replace expression like these:
 

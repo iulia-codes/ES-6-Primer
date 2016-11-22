@@ -268,3 +268,49 @@ function CalculateBrutto(netto, tax = 19){
 	}
 
 ```
+
+##The Rest parameter
+
+It is possible to send any number of arguments to a function, as can be seen in the function below:
+
+```javascript
+(function(){
+	function AddNumbers(nr1, nr2){
+		var result = nr1 + nr2;		
+		for (var i = 2; i < arguments.length; i++) {
+			result += arguments[i];
+		}
+		return result;
+	}
+
+	console.log(AddNumbers(1,2));
+	console.log(AddNumbers(1,2,3,4,5));
+	
+}());
+```
+
+The result is : __3__ and __15__
+
+The __rest__ paramter handles all the other parameters that may come in as arguments to a function. This is a similar to the 
+__args[]__ from other programming languages (like C#)
+
+```javascript
+(function(){
+	function AddNumbers(nr1, nr, ...numbers ){
+		var result = nr1 + nr2;	
+		//arguments[0]	1
+		//arguments[1]	2
+		//arguments[2]	3
+		//arguments[3]	4
+		//arguments[4]	5
+		for (var i = 0; i < numbers.length; i++) {
+			result += arguments[i];
+		}
+		return result;
+	}
+
+	console.log(AddNumbers(1,2));
+	console.log(AddNumbers(1,2,3,4,5));
+	
+}());
+```

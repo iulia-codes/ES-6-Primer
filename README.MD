@@ -648,3 +648,30 @@ console.log(account.toString());
 
 
 ```
+
+## Inheritance
+
+Starting from the previously defined ```BankAccount``` class, we want to create a child account which has a difference from the main account:
+
+- it is not possible to extract more than 50eur at a time
+- name of a parent must be given
+
+
+In ES6, it possible to extend a class, using the ``` extends ``` keyword. 
+
+- Using the ``` super ``` keyword - call the same method from the parent class
+
+```javascript
+	constructor(accountNumber, holder, balance, parentName ){
+			super(accountNumber, holder, balance);
+			this.parentName = parentName;
+		}
+```
+- one may overwrite a constructor by adding additional parameters to the parent constructor
+
+```javascript
+	constructor(accountNumber, holder, balance, parentName ){
+			super(accountNumber, holder, balance);
+			this.parentName = parentName;
+		}
+```

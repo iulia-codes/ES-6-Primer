@@ -1219,3 +1219,19 @@ export class Person {
 	}
 }
 ```
+
+## Module exports
+
+To consume a module, we must specify which class we want to import from where:
+
+Syntax:
+
+```javascript
+import{ClassName} from 'PathToFile';
+```
+
+```javascript
+import{Person} from './5_1_Export.js';
+```
+
+Firefox and Chrome do not enable the usage of Modules as of yet. But it is possible to run the modules if we use a transpiler. Therefore, a Polyfill must be used.

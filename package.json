@@ -1,0 +1,16 @@
+{
+  "name": "es-6",
+  "version": "1.0.0",
+  "description": "A primer on ES6. Primer is the first layer applied.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "es6",
+    "ecmascript",
+    "2015"
+  ],
+  "author": "Iulia Buga",
+  "license": "MIT"
+}

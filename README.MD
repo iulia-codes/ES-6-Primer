@@ -1,3 +1,7 @@
+# About
+
+This ECMA-6 primer is based on a tutorial from <a href="https://www.video2brain.com/de/videotraining/neu-in-javascript-6">video2brain.com</a> from the child training company of Lynda.
+
 # ES-6 - What's new?
 
 ECMAScript is the name under the ECMA-262 standard

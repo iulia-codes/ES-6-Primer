@@ -1140,3 +1140,44 @@ while still using the this keyword.
 This eliminates completely the usage of extra variables to safe the state. Nice addition!
 
 
+## Promises
+
+Promises are a promise that something will happen in the future. They are chainable and can be executed one after another. What is new in __ES6__ is that we do not need an extra library anymore to use the promises, it is directly included in __ES6__. For example:
+
+
+```javascript
+"use strict";
+
+//ES56
+(function(){
+	
+	//the timeout was usually given for callback functions, in the past
+	//For example, we make a web request, and when the answer comes, we want to execute the callback function
+	//Now, we take the result of the callback, and call another web service (service 2)
+	//We give again a callback function for when the response for service 2 comes .. and so on
+
+	function timeout(msg, name, duration = 0) {
+		return new Promise((resolve, reject) => {
+			setTimeout( () => resolve(`${name}:  ${msg}`), duration);
+		})
+	}
+
+	timeout("Test", "Direct", 500)
+		.then (msg => timeout (msg, "Promise 1", 200))
+		.then (msg => timeout (msg, "Promise 2", 200))
+		.then (msg => console.log(msg));
+
+}());
+```
+
+Here we define a function timeout that gets a ``message``, ``name`` and a ``duration``. The function then returns a new object: ``Promise`` that gets as input a ``resolve`` and ``reject`` parameters. This tells us if everything went well with the promise, or not.
+
+In the Promise we define a ``timeout`` that calls the ``resolve`` at each given ``duration`` time.
+
+To run this practical example, we set ``message`` ``Test`` and the ``name`` to be ``Direct`` with a timeout of ``500 ms``. Then call again the timeout functions, with a shorter duration. At the end, print the ``msg``
+
+After executing the code, this will print:
+
+``Promise 2:  Promise 1:  Direct:  Test``
+
+

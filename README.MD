@@ -1181,3 +1181,41 @@ After executing the code, this will print:
 ``Promise 2:  Promise 1:  Direct:  Test``
 
 
+
+## Module exports
+
+Insted of defining numerous classes in numerous files, we can simply use the same idea as in Node.JS and define exports. 
+
+In ES6, we can specify what we want to export.
+
+In our example, we have a class ``Person`` that has a ``constructor`` and a method ``sayName()``. 
+
+```javascript
+
+class Person {
+	constructor (name){
+		this.name = name;
+	}
+
+	sayName()
+	{
+		console.log(`Hello, my name is ${this.name}`);
+	}
+}
+```
+
+If we want the class to be used from outside, we must use the ``exports`` keyword before the class declaration.
+
+```javascript
+
+export class Person {
+	constructor (name){
+		this.name = name;
+	}
+
+	sayName()
+	{
+		console.log(`Hello, my name is ${this.name}`);
+	}
+}
+```
